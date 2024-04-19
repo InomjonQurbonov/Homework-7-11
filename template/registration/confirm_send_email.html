@@ -1,0 +1,21 @@
+{% extends 'base_login.html' %}
+{% load static %}
+
+{% block title %}
+	Email confirm page
+{% endblock %}
+
+{% block content %}
+    <div class="main-w3layouts wrapper">
+		<h1>Emailingizga kelgan raqamni kiriting</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="number" max="999" min="100" name="num1">-<input type="number" max="999" min="100" name="num2">
+                    <input type="submit" value="Send" class="btn btn-success mt-3">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

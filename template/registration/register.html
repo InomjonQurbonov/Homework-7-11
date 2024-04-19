@@ -1,0 +1,25 @@
+{% extends 'base_login.html' %}
+{% load static %}
+
+{% block title %}
+	Register page
+{% endblock %}
+
+{% block content %}
+	<div class="main-w3layouts wrapper">
+		<h1>Creative SignUp Form</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+                <div class="container bg-primary text-center">
+                    <h1>User register page</h1>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ form }}
+                        <input type="submit" value="Register" class="btn btn-success mt-3">
+                    </form>
+                    <p>You have already account/ <a href="{% url 'login' %}" class="text-white">Log In</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

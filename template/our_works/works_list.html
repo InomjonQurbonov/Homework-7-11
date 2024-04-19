@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	WorkList
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid p-5 bg-primary text-white text-center">
+      <h1>Here all Our works in 2024</h1>
+      <p>Hello {{ user.username }}. For more information push to 'More' button!</p>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Work Name</th>
+        <th>Work Date</th>
+        <th>About Work</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for work in works %}
+        <tr>
+            <td>{{ work.work_title }}</td>
+            <td>{{ work.work_date }}</td>
+            <td><a href="{% url 'about_works' work.pk %}">More About This work</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

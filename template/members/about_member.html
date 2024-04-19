@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	{{ news.news_title }}
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid p-5 bg-primary text-white text-center">
+        <h1>{{ news.news_title }}</h1> <h4>{{ news.news_areas }}</h4><span class="badge bg-info">{{ news.add_views_count }}</span>
+        <h3>Author:{{ news.news_author }}</h3>
+            <button type="button" class="btn btn-warning"><a href="{% url 'update' news.pk %}" class="text-white">Edit News</a></button>
+            <button type="button" class="btn btn-danger"><a href="{% url 'delete' news.pk %}" class="text-white">Delete News</a></button>
+    <div class="container">{{ news.news_content|safe }}</div>
+        <img src="{% static news.news_image %}" alt="News_image">
+    <div class="container">{{ news.news_description|safe }}</div>
+    <div class="container"> News Area:{{ news.news_areas|safe }}</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+{% endblock %}

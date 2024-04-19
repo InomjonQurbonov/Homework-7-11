@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	User-{{ user.username }}
+{% endblock %}
+
+{% block content %}
+	<div class="container-fluid p-5 bg-primary text-white text-center">
+          <h1>Hello User {{ user.username }}</h1>
+          <p>Your FullName {{ user.first_name }} {{ user.last_name }}</p>
+        <div class="container">
+            <h2>Your email:{{ user.email }}. Last login:{{ user.last_login }}</h2>
+        </div>
+        <div class="container-fluid p-5 bg-light text-primary text-center">
+            <button type="button" class="btn btn-primary"><a href="{% url 'add_news' %}" class="text-white">Add News</a></button>
+            <button type="button" class="btn btn-primary"><a href="{% url 'add_work' %}" class="text-white">Add Works</a></button>
+            <button type="button" class="btn btn-primary"><a href="" class="text-white">Add Members</a></button>
+            <button type="button" class="btn btn-primary"><a href="" class="text-white">Add Organization</a></button>
+            <h3>Here you can Change Password or Log Out your account</h3>
+            <button type="button" class="btn btn-warning"><a href="{% url 'password_change' %}">Change Password</a></button>
+            <button type="button" class="btn btn-danger"><a href="{% url 'logout' %}">Log Out</a></button>
+        </div>
+    </div>
+
+{% endblock %}

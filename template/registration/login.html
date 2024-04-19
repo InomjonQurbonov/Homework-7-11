@@ -1,0 +1,22 @@
+{% extends 'base_login.html' %}
+{% load static %}
+
+{% block title %}
+	Login page
+{% endblock %}
+{% block content %}
+	<div class="main-w3layouts wrapper">
+		<h1>User Login Page</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <a href="{% url 'password_reset' %}" class="text-white">Forgot password?</a>
+                    <input type="submit" value="Log In" class="btn btn-success mt-3">
+                </form>
+                <p>You don't have account/ <a href="{% url 'register' %}" class="text-white">Register</a></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

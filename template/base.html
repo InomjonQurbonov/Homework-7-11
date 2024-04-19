@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style/bg.css' %}">
+    <link rel="stylesheet" href="{% static 'style/footer.css' %}">
+    <title>
+        {% block title %}
+    	    MainPage
+        {% endblock %}
+    </title>
+</head>
+<body>
+<div class="area">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'img/logo.png' %}" alt="" style="width: 70px">
+                United Nations
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">Events and News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">Our Works</a>
+                    </li>
+                </ul>
+                {% if user.is_authenticated %}
+                	<div class="dropdown">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                        {{ user.username }}
+                    </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://www.unicef.org/">UNICEF</a></li>
+                            <li><a class="dropdown-item" href="https://www.unesco.org/en">UNESCO</a></li>
+                            <li><a class="dropdown-item" href="{% url 'profile' user.pk %}">Account</a></li>
+                            {% if user.is_superuser %}
+                            	<li><a class="dropdown-item" href="{% url 'superuser' %}">Send message for Users</a></li>
+                            {% endif %}
+                            <li><a class="dropdown-item" href="{% url 'password_reset' %}">Reset Password</a></li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Log Out</a></li>
+                        </ul>
+                </div>
+                    {% else %}
+                     <a href="{% url 'register' %}">
+                        <button type="button" class="btn btn-success rounded-pill">Register</button>
+                    </a>
+                    <a href="{% url 'login' %}">
+                        <button type="button" class="btn btn-info rounded-pill">login</button>
+                    </a>
+                {% endif %}
+            <form class="d-flex" action="#" method="get">
+                <input class="form-control me-2" type="text" placeholder="Search" name="search">
+                <button class="btn btn-light" type="submit">Search</button>
+            </form>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}
+
+    {% endblock %}
+    <div class="footer">&copy;
+        <span>2024</span>
+        <span>
+            United Nations. All rights reserved.
+        </span>
+        <div class="links">
+            <a href="https://www.un.org/en/about-us/privacy-notice">Privacy Policy</a>
+            <a href="https://www.un.org/en/about-us/terms-of-use">Terms of Use</a>
+            <a href="https://www.un.org/en/contact-us-0">Contact</a>
+            <a href="https://www.un.org/en/about-us/copyright">Copyright</a>
+        </div>
+  </div>
+</div >
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+</body>
+</html>

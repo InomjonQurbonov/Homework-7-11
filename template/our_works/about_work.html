@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	{{ works.work_title }}
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid p-5 bg-primary text-white text-center">
+        <h1>{{ works.work_title }}</h1> <h4>{{ works.work_date }}</h4>
+            <button type="button" class="btn btn-warning"><a href="{% url 'update_work' works.pk %}" class="text-white">Edit Works</a></button>
+            <button type="button" class="btn btn-danger"><a href="{% url 'delete_work' works.pk %}" class="text-white">Delete Works</a></button>
+    <div class="container">{{ works.work_description|safe }}</div>
+        <img src="{% static works.work_image %}" alt="Work_image">
+    <div class="container">{{ works.workers }}</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+{% endblock %}
